@@ -13,6 +13,7 @@ app.get('/book', (req, res) => {
   const book = req.body;
   db.save({ book });
   res.end();
-})
+});
+
 
 app.listen(port, () => console.log('Now listening on port ' + port));
