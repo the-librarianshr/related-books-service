@@ -13,14 +13,14 @@ let bookSchema = mongoose.Schema({
     },
     name: String
   },
+  image: String,
   title: String,
-  genre: String,
   description: String,
   year: Number,
   rating: Number
 });
 
-let Repo = mongoose.model('Book', bookSchema);
+let Repo = mongoose.model('Book', bookSchema, 'books');
 
 let save = (data) => {
   const book = new Repo(data);
@@ -30,4 +30,11 @@ let save = (data) => {
   });
 }
 
+let saveMany = (data) => {
+  Repo.collection.insert(data, (err, books) => {
+    if (err) console.log(err);
+  });
+}
+
 module.exports.save = save;
+module.exports.saveMany = saveMany;
