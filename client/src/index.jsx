@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Carousel from './Carousel.jsx';
+import BookCarousel from './Carousel.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      books: [],
+    };
   }
 
   getBooks() {
     console.log('ajax');
-    $.ajax({ method: 'GET', url: 'http://localhost:3004/books' }).then(res => {
-      console.log(res);
+    $.ajax({ method: 'GET', url: 'http://localhost:3004/books' }).then(books => {
+      this.setState({ books });
+      console.log(books);
     });
   }
   componentDidMount() {
@@ -18,8 +22,9 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h3 className="text-center">Readers Also Enjoyed:</h3>
+      <div className="container">
+        <h3>Readers Also Enjoyed:</h3>
+        <BookCarousel books={this.state.books.slice(0, 5)} />
       </div>
     );
   }
