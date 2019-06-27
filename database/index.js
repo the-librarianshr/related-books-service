@@ -36,5 +36,13 @@ let saveMany = (data) => {
   });
 }
 
+let find = (cb) => {
+  Repo.find().exec((err, res) => {
+    if (err) throw err;
+    cb(res);
+  });
+}
+
 module.exports.save = save;
 module.exports.saveMany = saveMany;
+module.exports.find = find;

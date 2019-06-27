@@ -9,10 +9,12 @@ app.use(express.static(__dirname + '/../public/dist'));
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: false }));
 
-app.get('/book', (req, res) => {
-  const book = req.body;
-  db.save({ book });
-  res.end();
+app.get('/books', (req, res) => {
+  console.log('requested? ')
+  db.find(response => {
+    console.log(response);
+    res.send(response);
+  });
 });
 
 

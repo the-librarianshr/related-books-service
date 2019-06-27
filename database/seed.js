@@ -1,7 +1,6 @@
 const faker = require('faker');
 const request = require('request');
 const db = require('.');
-const fs = require('fs');
 
 const getRandomImage = (cb) => {
   const randomPage = Math.floor(Math.random() * 30).toString();
@@ -26,14 +25,12 @@ const createBook = (id) => {
     book.year = faker.date.past(100);
     book.rating = `${Math.floor(Math.random() * 5)}.${Math.floor(Math.random() * 10)}`;
     book.image = res;
-    console.log(JSON.stringify(book));
     db.save(book);
   });
 };
 
 for (var i = 0; i <= 100; i++) {
   createBook(i);
-  console.log(JSON.stringify(books));
 }
 
 
