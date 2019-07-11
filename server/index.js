@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParse = require('body-parser');
+const cors = require('cors');
 const db = require('../database');
 
 const port = 3004;
@@ -9,10 +10,8 @@ app.use(express.static(__dirname + '/../public/dist'));
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: false }));
 
-app.get('/books', (req, res) => {
-  console.log('requested? ')
+app.get('/books', cors(), (req, res) => {
   db.find(response => {
-    console.log(response);
     res.send(response);
   });
 });

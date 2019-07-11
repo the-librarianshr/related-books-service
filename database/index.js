@@ -26,7 +26,7 @@ let save = (data) => {
   const book = new Repo(data);
   book.save((err, book) => {
     if (err) console.log('error:', err);
-    console.log(book.title, ' saved to database');
+    console.log('saved to database');
   });
 }
 

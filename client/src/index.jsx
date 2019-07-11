@@ -22,12 +22,12 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="container mt-5">
         <h3>Readers Also Enjoyed:</h3>
-        <BookCarousel books={this.state.books.slice(0, 5)} />
+        <BookCarousel books={this.state.books.slice(0, 10)} />
       </div>
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app2'));

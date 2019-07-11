@@ -22,13 +22,18 @@ class BookCarousel extends React.Component {
     const { index, direction } = this.state;
     const { books } = this.props;
     return (
-      <Carousel activeIndex={index} direction={direction} onSelect={this.handleSelect}>
+      <Carousel
+        style={{ width: '200px' }}
+        activeIndex={index}
+        direction={direction}
+        onSelect={this.handleSelect}
+      >
         {books.map(book => (
           <Carousel.Item key={book.id}>
             <img className="d-block w-100" src={book.image} alt={book.title} />
             <Carousel.Caption>
               <h3>{book.title}</h3>
-              <p>{book.description}</p>
+              <h4>{book.author.name}</h4>
             </Carousel.Caption>
           </Carousel.Item>
         ))}

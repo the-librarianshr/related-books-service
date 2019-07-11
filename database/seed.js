@@ -6,11 +6,12 @@ const getRandomImage = (cb) => {
   const randomPage = Math.floor(Math.random() * 30).toString();
   const randomImage = Math.floor(Math.random() * 30).toString();
   request({ url: 'https://picsum.photos/v2/list?page=' + randomPage }, (err, response) => {
-    cb(JSON.parse(response.body)[randomImage].download_url);
+    let url = JSON.parse(response.body)[randomImage].download_url;
+    url = url.slice(0, url.indexOf('/', 25)) + '/85/130'
+    cb(url);
   });
 }
 
-const books = [];
 const createBook = (id) => {
   let book = {};
   getRandomImage(res => {
