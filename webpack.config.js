@@ -7,7 +7,7 @@ module.exports = {
         test: /\.jsx?/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        query: {
+        options: {
           presets: ['@babel/preset-env', '@babel/preset-react'],
           plugins: ['@babel/plugin-proposal-object-rest-spread'],
         }

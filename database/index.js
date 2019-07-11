@@ -26,7 +26,7 @@ let save = (data) => {
   const book = new Repo(data);
   book.save((err, book) => {
     if (err) console.log('error:', err);
-    console.log(book.title, ' saved to database');
+    console.log('saved to database');
   });
 }
 
@@ -36,5 +36,13 @@ let saveMany = (data) => {
   });
 }
 
+let find = (cb) => {
+  Repo.find().exec((err, res) => {
+    if (err) throw err;
+    cb(res);
+  });
+}
+
 module.exports.save = save;
 module.exports.saveMany = saveMany;
+module.exports.find = find;
